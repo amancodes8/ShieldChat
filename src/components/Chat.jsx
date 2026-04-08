@@ -76,18 +76,11 @@ export const Chat = (props) => {
             (error) => {
                 console.error("Firestore error:", error);
                 setError(
-                    <div>
-                        <p>Index required: {error.message}</p>
-                        <a
-                            href="https://console.firebase.google.com/project/ishan-saraswat/firestore/indexes"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{ color: 'blue', textDecoration: 'underline' }}
-                        >
-                            Click here to create the required index
-                        </a>
-                        <p style={{ fontSize: '12px', marginTop: '10px' }}>
-                            Or wait 2-5 minutes if you already created it
+                    <div className="flex flex-col gap-2 w-full pr-4 text-xs">
+                        <p className="font-medium text-red-300">Firestore Index Required</p>
+                        <p className="opacity-80 break-all">{error.message}</p>
+                        <p className="mt-2 opacity-90 font-medium pb-1">
+                            👆 Please copy the URL provided in the error message above, paste it into your browser, and click "Create Index". It will take 2-3 minutes to build.
                         </p>
                     </div>
                 );

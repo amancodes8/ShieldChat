@@ -1,6 +1,7 @@
 import { auth, provider } from "../firebase-config.js"
 import { signInWithPopup } from "firebase/auth"
 import Cookies from "universal-cookie"
+import abstractBg from "../assets/abstract_bg.png"
 const cookies = new Cookies()
 
 export const Auth = (props) => {
@@ -19,26 +20,27 @@ export const Auth = (props) => {
     }
     
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 relative w-full overflow-hidden">
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-indigo-50 to-blue-100 z-0"></div>
+        <div className="flex flex-col items-center justify-center min-h-screen relative w-full overflow-hidden bg-[#0a0a0f] text-white font-sans">
+            <img src={abstractBg} className="absolute inset-0 w-full h-full object-cover z-0 opacity-40 mix-blend-unmultiply" alt="Abstract Background" />
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-black via-transparent to-black opacity-50 z-0"></div>
             
-            <div className="relative z-10 w-full max-w-md p-10 bg-white rounded-3xl shadow-2xl border border-gray-100 transform transition-all hover:scale-105 duration-300">
+            <div className="relative z-10 w-full max-w-md p-10 bg-white/5 backdrop-blur-2xl rounded-3xl shadow-2xl border border-white/10 transform transition-all hover:scale-[1.02] duration-500">
                 <div className="flex justify-center mb-8">
-                    <div className="w-20 h-20 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200">
-                        <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    <div className="w-20 h-20 bg-indigo-500/10 rounded-2xl flex items-center justify-center shadow-inner border border-indigo-300/20 backdrop-blur-md">
+                        <svg className="w-10 h-10 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                         </svg>
                     </div>
                 </div>
                 
                 <div className="text-center mb-10">
-                    <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight mb-2">ShieldChat</h1>
-                    <p className="text-gray-500 font-medium tracking-wide">Secure, encrypted messaging</p>
+                    <h1 className="text-4xl font-light tracking-wider text-white mb-2">ShieldChat</h1>
+                    <p className="text-indigo-200/50 font-light tracking-widest text-xs uppercase">Secure encrypted messaging</p>
                 </div>
                 
                 <button 
                     onClick={signInWithGoogle}
-                    className="w-full flex items-center justify-center gap-3 bg-white hover:bg-gray-50 text-gray-800 font-semibold py-3.5 px-6 border border-gray-300 rounded-xl shadow-sm transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="w-full flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 text-white font-medium py-4 px-6 border border-white/10 rounded-xl shadow-[0_4px_30px_rgba(0,0,0,0.1)] transition-all duration-300 focus:outline-none focus:ring-1 focus:ring-white/30"
                 >
                     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -50,8 +52,8 @@ export const Auth = (props) => {
                 </button>
             </div>
             
-            <div className="absolute bottom-8 text-center w-full z-10">
-                <p className="text-sm text-gray-500 font-medium">End-to-End Encrypted</p>
+            <div className="absolute bottom-8 text-center w-full z-10 pointer-events-none">
+                <p className="text-[10px] text-white/30 font-light tracking-widest uppercase">End-to-End Encrypted</p>
             </div>
         </div>
     )
